@@ -1,0 +1,3 @@
+[submodule "newry-SharedLib"]
+	path = newry-SharedLib
+	url = https://github.com/nvenger-technology/newry-SharedLib.git
