@@ -6,3 +6,11 @@ PingPongFeed.Service/bin/Debug/net6.0/
 PingPongFeed.Service/obj/Debug/net6.0/
 
 PingPongFeed.Service/obj/
+
+PingPong.Domain/obj/Debug/net6.0/
+
+PingPong.Domain/obj/
+
+PingPong.Infrastructure/obj/Debug/net6.0/
+
+PingPong.Infrastructure/obj/

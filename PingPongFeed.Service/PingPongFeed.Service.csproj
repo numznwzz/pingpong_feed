@@ -14,4 +14,8 @@
       <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PingPong.Infrastructure\PingPong.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
