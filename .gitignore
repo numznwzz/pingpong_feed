@@ -14,3 +14,7 @@ PingPong.Domain/obj/
 PingPong.Infrastructure/obj/Debug/net6.0/
 
 PingPong.Infrastructure/obj/
+
+PingPong.Domain/bin/Debug/net6.0/
+
+PingPong.Infrastructure/bin/Debug/net6.0/

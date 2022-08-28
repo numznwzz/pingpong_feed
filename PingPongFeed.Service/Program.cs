@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json.Converters;
+using PingPongFeed.Service.Extension;
+using PingPongFeed.Service.ServiceStart;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,8 +29,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 
 builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks();
+builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddResponseCompression(options => { options.Providers.Add<GzipCompressionProvider>(); });
-
+builder.Services.AddHostedService<ServiceStart>();
 
 await using var app = builder.Build();
 

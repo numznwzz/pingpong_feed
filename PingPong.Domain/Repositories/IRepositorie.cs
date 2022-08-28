@@ -1,6 +1,6 @@
 namespace PingPong.Domain.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity> : IDisposable where TEntity : class, new()
     {
         IQueryable<TEntity> GetAll();
 

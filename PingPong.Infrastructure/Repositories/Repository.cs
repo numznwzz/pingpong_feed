@@ -1,21 +1,19 @@
 using BankService.Models;
 using Lotto.Models;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using PingPong.Domain.Repositories;
 using Serilog;
 
 namespace PingPong.Infrastructure.Repositories
 {
+
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
     {
-        private readonly LottoService _bankDb;
+        private readonly LottoService _bankServiceDb;
         private readonly ILogger Log;
-        private readonly IServiceProvider _serviceProvider;
-
-        public Repository(IServiceProvider serviceProvider)
+        public Repository( IServiceProvider serviceProvider, LottoService bankServiceDb)
         {
-            _serviceProvider = serviceProvider;
-            _bankDb = _serviceProvider.GetRequiredService<LottoService>();
+            _bankServiceDb = bankServiceDb;
             Log = Serilog.Log.ForContext("SourceContext", "Repository");
         }
 
@@ -23,11 +21,12 @@ namespace PingPong.Infrastructure.Repositories
         {
             try
             {
-                return _bankDb.Set<TEntity>();
+                return _bankServiceDb.Set<TEntity>();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Couldn't retrieve entities");
+                Exception newEx = new Exception("GetAll", ex);
+                throw newEx;
             }
         }
 
@@ -40,15 +39,17 @@ namespace PingPong.Infrastructure.Repositories
 
             try
             {
-                await _bankDb.AddAsync(entity);
-                await _bankDb.SaveChangesAsync();
+                await _bankServiceDb.AddAsync(entity);
+                await _bankServiceDb.SaveChangesAsync();
+              //  _numberReachDb.Entry<TEntity>(entity).State = EntityState.Detached;
 
                 return entity;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Log.Error(e.Message);
-                throw new Exception($"{nameof(entity)} could not be saved");
+                Log.Error(ex.Message);
+                Exception newEx = new Exception("AddAsync", ex);
+                throw newEx;
             }
         }
 
@@ -61,14 +62,16 @@ namespace PingPong.Infrastructure.Repositories
 
             try
             {
-                _bankDb.Update(entity);
-                await _bankDb.SaveChangesAsync();
+                _bankServiceDb.Update(entity);
+                await _bankServiceDb.SaveChangesAsync();
+                _bankServiceDb.Entry<TEntity>(entity).State = EntityState.Detached;
 
                 return entity;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception($"{nameof(entity)} could not be updated");
+                Exception newEx = new Exception("UpdateAsync", ex);
+                throw newEx;
             }
         }
 
@@ -81,13 +84,21 @@ namespace PingPong.Infrastructure.Repositories
 
             try
             {
-                _bankDb.UpdateRange(entities);
-                await _bankDb.SaveChangesAsync();
+                _bankServiceDb.UpdateRange(entities);
+                await _bankServiceDb.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception($"{nameof(entities)} could not be updated");
+                Exception newEx = new Exception("UpdateRangeAsync", ex);
+                throw newEx;
             }
+        }
+
+
+
+        public void Dispose()
+        {
+            _bankServiceDb.Dispose();
         }
     }
 }
