@@ -20,7 +20,7 @@ public class ServiceStart : BackgroundService
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        try
+        /*try
         {
             using (var scope = _serviceScopeFactory.CreateScope())
             {
@@ -31,6 +31,6 @@ public class ServiceStart : BackgroundService
         catch (Exception e)
         {
             
-        }
+        }*/
     }
 }

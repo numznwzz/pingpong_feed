@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  pingpongfeed-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      MysqlConnection: "server=mysql-lotto.cnowxsoknapu.ap-southeast-1.rds.amazonaws.com;database=lotto;uid=root;password=NW8448zzxxx999;charset=utf8;Pooling=true;ConnectionLifeTime=0;ConnectionReset=true;ConnectionIdleTimeout=180;MinimumPoolSize=5;MaximumPoolsize=5"

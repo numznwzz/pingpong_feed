@@ -1,3 +1,6 @@
 [submodule "newry-SharedLib"]
 	path = newry-SharedLib
 	url = https://github.com/nvenger-technology/newry-SharedLib.git
+[submodule "newry-dotnet-common"]
+	path = newry-dotnet-common
+	url = https://github.com/nvenger-technology/newry-dotnet-common.git

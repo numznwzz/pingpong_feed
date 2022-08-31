@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\newry-dotnet-common\Nvenger.Common.csproj" />
       <ProjectReference Include="..\PingPong.Infrastructure\PingPong.Infrastructure.csproj" />
     </ItemGroup>
 

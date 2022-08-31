@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingPong.Domain", "PingPong
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingPong.Infrastructure", "PingPong.Infrastructure\PingPong.Infrastructure.csproj", "{17B40F31-1048-4853-A87E-0944FFC90855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nvenger.Common", "newry-dotnet-common\Nvenger.Common.csproj", "{28882702-0542-4BEF-BE56-C916AA982FA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{17B40F31-1048-4853-A87E-0944FFC90855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17B40F31-1048-4853-A87E-0944FFC90855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17B40F31-1048-4853-A87E-0944FFC90855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28882702-0542-4BEF-BE56-C916AA982FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28882702-0542-4BEF-BE56-C916AA982FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28882702-0542-4BEF-BE56-C916AA982FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28882702-0542-4BEF-BE56-C916AA982FA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

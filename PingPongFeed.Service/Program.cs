@@ -31,7 +31,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks();
 builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddResponseCompression(options => { options.Providers.Add<GzipCompressionProvider>(); });
-builder.Services.AddHostedService<ServiceStart>();
+//builder.Services.AddHostedService<ServiceStart>();
 
 await using var app = builder.Build();
 
@@ -46,6 +46,7 @@ else
     app.UseHsts();
 }
 
+app.MapControllers();
 app.MapHealthChecks("/health", new HealthCheckOptions { ResponseWriter = WriteResponse});
 
 await app.RunAsync("http://localhost:8080");
